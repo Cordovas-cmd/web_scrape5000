@@ -1,3 +1,4 @@
+const apiKey = "";
 
 const searchBtn = document.getElementById('searchBtn');
 
@@ -25,10 +26,12 @@ searchBtn.addEventListener("click", (e) => {
                 // grabbing the video id but would need to format it into a link
                 if (item.id.videoId != undefined) {
                     const link = `https://www.youtube.com/watch?v=${item.id.videoId}`
-                    console.log(link);
+                    console.log(item.snippet.thumbnails.high.url);
 
                     // print each link from our query into the results container
                     resultsContainer.innerHTML += `<h2>${item.snippet.title}</h2>`;
+                    resultsContainer.innerHTML += `<img src="${item.snippet.thumbnails.high.url}" />`
+                    resultsContainer.innerHTML += `<br />`
                     resultsContainer.innerHTML += `<a href="${link}">${link}</a>`;
                     resultsContainer.innerHTML += `<p>${item.snippet.description}</p>`;
 
